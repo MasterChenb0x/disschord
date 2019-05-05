@@ -6,10 +6,16 @@ import discord
 import random
 
 def f_request(msg):
+    """
+    Logs a feature reuest from a user
+    """
     with open("features.txt", "a") as f:
         f.write(str(msg) + "\n")
 
 def ate_bawl():
+    """
+    Magic 8 Ball function
+    """
     response = ['It is certain',
         'It is decidedly so',
         'Without a doubt',
@@ -33,6 +39,16 @@ def ate_bawl():
 
     return response[random.randint(1, len(response))]
 
+def grab_koan():
+    """
+    Grabs a zen koan from the koans.txt list (from ashidakim.com) and share it
+   """
+    koans = []
+    with open('koans.txt', 'r') as f:
+        for x in f:
+            koans.append(x)
+    return koans[random.randint(1, len(koans))]
+
 TOKEN = 'YOUR_TOKEN'
 
 client = discord.Client()
@@ -55,6 +71,12 @@ async def on_message(message):
 
     if message.content.startswith('!8-ball'):
         msg = ate_bawl()
+        await client.send_message(message.channel, msg)
+
+    if message.content.startswith('!zen'):
+        msg = 'Here\'s a zen story for you.'
+        await client.send_message(message.channel, msg)
+        msg = grab_koan()
         await client.send_message(message.channel, msg)
 
 @client.event
