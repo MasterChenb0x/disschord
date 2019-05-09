@@ -21,6 +21,30 @@ async def on_ready():
 async def on_message(message):
     print(f"{message.channel}: {message.author}: {message.author.name}: {message.content}")
 
+    if message.author == client.user:
+        return
+
+    if message.content.startswith('!hello'):
+        msg = 'Hello {0.author.mention}'.format(message)
+        await message.channel.send(msg)
+
+#--- OG Chen code ---#
+    if message.content.startswith('!feature'):
+        f_request(message.content)
+        msg = 'Your request has been logged. Give my creator 3-4 weeks to implement your request.'
+        await message.channel.send(msg)
+
+    if message.content.startswith('!8-ball'):
+        msg = ate_bawl()
+        await message.channel.send(msg)
+
+    if message.content.startswith('!zen'):
+        msg = 'Here\'s a zen story for you.'
+        await message.channel.send(msg)
+        msg = grab_koan()
+        await message.channel.send(msg)
+
+
     
 
 client.run(TOKEN[0])

@@ -1,5 +1,6 @@
 #!/usr/local/bin/python3
 
+import random
 import sys
 
 def f_request(msg):
