@@ -2,9 +2,12 @@
 
 #Import the universe
 import discord
+from command_functions import *
 
 #Read token from file
 TOKEN = open("token.txt", "r").read().splitlines()
+
+#-- Functions
 
 client = discord.Client()
 
