@@ -3,9 +3,10 @@
 #Import the universe
 import discord
 from command_functions import *
+from weather_functions import *
 
-#Read token from file
-TOKEN = open("token.txt", "r").read().splitlines()
+#Read tokens from file
+DISCORD_TOKEN = open("token.txt", "r").read().splitlines()
 
 #-- Functions
 
@@ -44,7 +45,11 @@ async def on_message(message):
         msg = grab_koan()
         await message.channel.send(msg)
 
+    if message.content.startswith('!weather'):
+        msg = get_weather("Henderson")
+        await message.channel.send(msg)
+
 
     
 
-client.run(TOKEN[0])
+client.run(DISCORD_TOKEN[0])
