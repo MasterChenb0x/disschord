@@ -46,7 +46,10 @@ async def on_message(message):
         await message.channel.send(msg)
 
     if message.content.startswith('!weather'):
-        msg = get_weather("Henderson")
+        query = message.content.split(" ")
+        city = " ".join(query[1:])  
+        msg = get_weather(city)
+        #msg = city
         await message.channel.send(msg)
 
 
