@@ -4,6 +4,7 @@
 import discord
 from command_functions import *
 from weather_functions import *
+from statz_gamez import *
 
 #Read tokens from file
 DISCORD_TOKEN = open("token.txt", "r").read().splitlines()
@@ -51,6 +52,10 @@ async def on_message(message):
         msg = get_weather(city)
         #msg = city
         await message.channel.send(msg)
+
+    if message.content.startswith("!dice"):
+        query = message.content.split(" ")
+        await message.channel.send(dice_roll(int(query[1])))
 
 
     
