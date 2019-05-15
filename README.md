@@ -8,3 +8,5 @@ A bot for use in Discord chat servers
 	`!8-ball Will I be rich?`
 3. Request a zen koan 
         `!zen`
+4. Request the weather.
+	`!weather New York`
