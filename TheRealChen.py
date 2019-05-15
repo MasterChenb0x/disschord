@@ -57,7 +57,8 @@ async def on_message(message):
         query = message.content.split(" ")
         await message.channel.send(dice_roll(int(query[1])))
 
-
+    if message.content.startswith("!coinflip"):
+        await message.channel.send(coin_flip())
     
 
 client.run(DISCORD_TOKEN[0])
