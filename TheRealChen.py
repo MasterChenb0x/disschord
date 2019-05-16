@@ -5,6 +5,7 @@ import discord
 from command_functions import *
 from weather_functions import *
 from statz_gamez import *
+from infosecnews import *
 
 #Read tokens from file
 DISCORD_TOKEN = open("token.txt", "r").read().splitlines()
@@ -60,5 +61,9 @@ async def on_message(message):
     if message.content.startswith("!coinflip"):
         await message.channel.send(coin_flip())
     
+    if message.content.startswith("!news"):
+        news = infosec_news()
+        for x in news:
+            await message.channel.send(x)
 
 client.run(DISCORD_TOKEN[0])
