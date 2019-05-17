@@ -47,6 +47,12 @@ async def on_message(message):
         msg = grab_koan()
         await message.channel.send(msg)
 
+    if message.content.startswith('!brocode'):
+        msg = 'Always mind The Bro Code.'
+        await message.channel.send(msg)
+        msg = bro_code()
+        await message.channel.send(msg)
+
     if message.content.startswith('!weather'):
         query = message.content.split(" ")
         city = " ".join(query[1:])  

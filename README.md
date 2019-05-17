@@ -15,3 +15,7 @@ A bot for use in Discord chat servers
 	`!coinflip`
 6. Grab the latest InfoSec News from https://seclists.org
 	`!news`
+
+### Resources
+[AshidaKim.com - Zen Konas](http://www.ashidakim.com/zenkoans/zenindex.html)
+[The Bro Code](https://brocode.org/the-code/)

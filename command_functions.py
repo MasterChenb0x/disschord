@@ -47,6 +47,16 @@ def grab_koan():
             koans.append(x)
     return koans[random.randint(1, len(koans))]
 
+def bro_code():
+    """
+    Grabs a rule of The Bro Code
+    """
+    brocode = []
+    with open('brocode.txt', 'r') as f:
+        for x in f:
+            brocode.append(x)
+    return brocode[random.randint(1, len(brocode))]
+
 if __name__ == "__main__":
     print("This cannot be ran on its own!")
     sys.exit()
