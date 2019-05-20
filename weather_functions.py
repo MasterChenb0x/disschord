@@ -32,4 +32,5 @@ def get_weather(city):
     else:
         return "City Not Found"
 
-
+if __name__ == "__main__":
+    print("This cannot be ran on its own. I mean, it can, but you won't like it.")
