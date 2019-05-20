@@ -4,7 +4,9 @@
 import discord
 from command_functions import *
 from weather_functions import *
+from chatter_functions import *
 from statz_gamez import *
+import random
 
 #Read tokens from file
 DISCORD_TOKEN = open("token.txt", "r").read().splitlines()
@@ -25,6 +27,14 @@ async def on_message(message):
 
     if message.author == client.user: # Ignore messages sent from self.
         return
+
+#-- Random Chatter message. Most likely to be moved elsewhere later.
+#    if (random.randint(1000, 99991231) + xOrShift()) % 300 < 1:
+    saysomething = random.randint(1,2)
+    if saysomething == 1:
+        await message.channel.send(bro_code())
+#-- End random chatter
+
 
     if message.content.startswith('!hello'):
         msg = 'Hello {0.author.mention}'.format(message)
