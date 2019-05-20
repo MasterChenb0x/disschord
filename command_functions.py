@@ -2,6 +2,8 @@
 
 import random
 import sys
+from bs4 import BeautifulSoup as bs
+import requests
 
 def f_request(msg):
     """
@@ -56,6 +58,21 @@ def bro_code():
         for x in f:
             brocode.append(x)
     return brocode[random.randint(1, len(brocode))]
+
+def infosec_news():
+    """
+    Grab InfoSec News from seclists.org
+    """
+    news = []
+    r = requests.get("https://seclists.org/rss/isn.rss")
+    r = r.text.encode("ascii", "ignore")
+    soup = bs(r, "lxml")
+    headlines = soup.find_all('title')
+
+    for headline in headlines:
+        news.append(headline.contents)
+
+    return news
 
 if __name__ == "__main__":
     print("This cannot be ran on its own!")
