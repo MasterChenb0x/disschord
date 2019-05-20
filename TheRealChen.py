@@ -5,7 +5,6 @@ import discord
 from command_functions import *
 from weather_functions import *
 from statz_gamez import *
-from infosecnews import *
 
 #Read tokens from file
 DISCORD_TOKEN = open("token.txt", "r").read().splitlines()
@@ -24,7 +23,7 @@ async def on_ready():
 async def on_message(message):
     print(f"{message.channel}: {message.author}: {message.author.name}: {message.content}")
 
-    if message.author == client.user:
+    if message.author == client.user: # Ignore messages sent from self.
         return
 
     if message.content.startswith('!hello'):
