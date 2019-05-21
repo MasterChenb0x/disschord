@@ -37,7 +37,7 @@ def ate_bawl():
         'Outlook not so good',
         'Very doubtful']
 
-    return response[random.randint(1, len(response))]
+    return response[random.randint(1, len(response)-1)]
 
 def grab_koan():
     """
@@ -47,7 +47,7 @@ def grab_koan():
     with open('koans.txt', 'r') as f:
         for x in f:
             koans.append(x)
-    return koans[random.randint(1, len(koans))]
+    return koans[random.randint(1, len(koans)-1)]
 
 def bro_code():
     """
@@ -57,7 +57,7 @@ def bro_code():
     with open('brocode.txt', 'r') as f:
         for x in f:
             brocode.append(x)
-    return brocode[random.randint(1, len(brocode))]
+    return brocode[random.randint(1, len(brocode)-1)]
 
 def infosec_news():
     """
