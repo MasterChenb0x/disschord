@@ -4,7 +4,9 @@
 import discord
 from command_functions import *
 from weather_functions import *
+from chatter_functions import *
 from statz_gamez import *
+import random
 
 #Read tokens from file
 DISCORD_TOKEN = open("token.txt", "r").read().splitlines()
@@ -12,6 +14,7 @@ DISCORD_TOKEN = open("token.txt", "r").read().splitlines()
 #-- Functions
 
 client = discord.Client()
+lastmsg = "i will fight you"
 
 @client.event
 async def on_ready():
@@ -21,10 +24,18 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    global lastmsg
     print(f"{message.channel}: {message.author}: {message.author.name}: {message.content}")
 
     if message.author == client.user: # Ignore messages sent from self.
         return
+
+#-- Random Chatter message. Most likely to be moved elsewhere later.
+#    if (random.randint(1000, 99991231) + xOrShift()) % 300 < 1:
+    saysomething = random.randint(1,2436)
+    if saysomething % 9 == 1:
+        await message.channel.send(bro_code())
+#-- End random chatter
 
     if message.content.startswith('!hello'):
         msg = 'Hello {0.author.mention}'.format(message)
@@ -71,4 +82,14 @@ async def on_message(message):
         for x in news:
             await message.channel.send(x)
 
+    if message.content.startswith("!help"):
+        await message.channel.send(help())
+
+#-- Not ready until I can track last message
+    if message.content.startswith("!mock"):
+        msg = mock(lastmsg)
+        await message.channel.send(msg)
+    lastmsg = message.content
+
 client.run(DISCORD_TOKEN[0])
+
