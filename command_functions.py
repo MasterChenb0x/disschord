@@ -5,6 +5,16 @@ import sys
 from bs4 import BeautifulSoup as bs
 import requests
 
+
+def help():
+    return """ TheRealChen-bot by MasterChen
+    !feature <request>
+    !8-ball <question>
+    !koan (grabs a zen story)
+    !weather <city>
+
+    """
+
 def f_request(msg):
     """
     Logs a feature reuest from a user
@@ -73,6 +83,19 @@ def infosec_news():
         news.append(headline.contents)
 
     return news
+
+def mock(message):
+    """
+    MoCk ThE lAsT mEsSaGe
+    """
+    new_string = []
+    for char in range(0,len(message)):
+        if char % 2 == 0:
+            new_string.append(message[char].upper())
+        else:
+            new_string.append(message[char])
+    return "".join(new_string)
+    
 
 if __name__ == "__main__":
     print("This cannot be ran on its own!")
