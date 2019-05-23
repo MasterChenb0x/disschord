@@ -22,7 +22,7 @@ def get_weather(city):
 
     if x['cod'] != "404":
         y = x['main']
-        curr_temp = fahrenheit_convert(y['temp'])
+        curr_temp = round(fahrenheit_convert(y['temp']), 2)
         curr_press = y['pressure']
         curr_humid = y['humidity']
         z = x['weather']
