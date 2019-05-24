@@ -5,19 +5,10 @@
 import requests
 from bs4 import BeautifulSoup as bs
 
-with open("brocode.txt", "a") as f:
-    for num in range(1,8):
-        url = f"https://brocode.org/the-code/{num}/"
+url = "https://apod.nasa.gov/apod/astropix.html"
 
-        r = requests.get(url)
-        r = r.text.encode("ascii", "ignore")
-        soup = bs(r, "lxml")
+r = requests.get(url)
+soup = bs(r.content, "lxml")
 
-        for link in soup.find_all("a"):
-            f.write(link.text + "\n")
-
-
-"""
-for d in soup.find_all("div", {'class':'main-code-box'}):
-    print(soup.find_all("a"))
-"""
+for link in soup.find_all("a"):
+    print(link)

@@ -31,6 +31,16 @@ def xOrShift():
     return XD
 # End xOrShift
 
+def say_something(textfile):
+    """
+    Grabs a random line from the specified textfile in prep for posting in chat
+    """
+    things2say = []
+    with open(textfile, 'r') as f:
+        for x in f:
+            things2say.append(x)
+    return things2say[random.randint(1, len(things2say)-1)]
+
 if __name__ == "__main__":
     print("This cannot be ran on its own. I mean, it can, but you won't like it.")
     sys.exit()

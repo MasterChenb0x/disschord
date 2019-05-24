@@ -25,16 +25,17 @@ async def on_ready():
 @client.event
 async def on_message(message):
     global lastmsg
-    print(f"{message.channel}: {message.author}: {message.author.name}: {message.content}")
+    print(f"{message.guild}: {message.channel}: {message.author}: {message.author.name}: {message.content}")
 
-    if message.author == client.user: # Ignore messages sent from self.
+    if message.author == client.user or str(message.guild) == "Greynoise": # Ignore messages sent from self, and for now, Greynoise
         return
+
 
 #-- Random Chatter message. Most likely to be moved elsewhere later.
 #    if (random.randint(1000, 99991231) + xOrShift()) % 300 < 1:
-    saysomething = random.randint(1,2436)
-    if saysomething % 9 == 1:
-        await message.channel.send(bro_code())
+#    saysomething = random.randint(1,2)
+#    if saysomething % 2 == 1:
+#        await message.channel.send("When I am an evil overlord, " + say_something('overlord.txt'))
 #-- End random chatter
 
     if message.content.startswith('!hello'):
@@ -52,16 +53,8 @@ async def on_message(message):
         await message.channel.send(msg)
 
     if message.content.startswith('!zen'):
-        msg = 'Here\'s a zen story for you.'
-        await message.channel.send(msg)
-        msg = grab_koan()
-        await message.channel.send(msg)
-
-    if message.content.startswith('!brocode'):
-        msg = 'Always mind The Bro Code.'
-        await message.channel.send(msg)
-        msg = bro_code()
-        await message.channel.send(msg)
+        await message.channel.send("Here\'s a zen story for you.")
+        await message.channel.send(say_something("koans.txt"))
 
     if message.content.startswith('!weather'):
         query = message.content.split(" ")
@@ -92,4 +85,3 @@ async def on_message(message):
     lastmsg = message.content
 
 client.run(DISCORD_TOKEN[0])
-

@@ -10,7 +10,7 @@ def help():
     return """ TheRealChen-bot by MasterChen
     !feature <request>
     !8-ball <question>
-    !koan (grabs a zen story)
+    !zen (grabs a zen story)
     !weather <city>
 
     """
@@ -58,16 +58,6 @@ def grab_koan():
         for x in f:
             koans.append(x)
     return koans[random.randint(1, len(koans)-1)]
-
-def bro_code():
-    """
-    Grabs a rule of The Bro Code
-    """
-    brocode = []
-    with open('brocode.txt', 'r') as f:
-        for x in f:
-            brocode.append(x)
-    return brocode[random.randint(1, len(brocode)-1)]
 
 def infosec_news():
     """
