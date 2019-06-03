@@ -20,7 +20,9 @@ lastmsg = "i will fight you"
 async def on_ready():
     print(f"Logged in as {client.user}")
     print(f"-------")
-
+    for guild in client.guilds:
+        for member in guild.members:
+            print(member)
 
 @client.event
 async def on_message(message):
@@ -31,15 +33,15 @@ async def on_message(message):
         return
 
 
-#-- Random Chatter message. Most likely to be moved elsewhere later.
-#    if (random.randint(1000, 99991231) + xOrShift()) % 300 < 1:
-#    saysomething = random.randint(1,2)
-#    if saysomething % 2 == 1:
-#        await message.channel.send("When I am an evil overlord, " + say_something('overlord.txt'))
+#-- Random Chatter
+    if (random.randint(1000, 99991231) + xOrShift()) % 300 < 1:
+        saysomething = random.randint(1,2)
+    if saysomething % 2 == 1:
+        await message.channel.send("When I am an evil overlord, " + say_something('overlord.txt'))
 #-- End random chatter
 
     if message.content.startswith('!hello'):
-        msg = 'Hello {0.author.mention}'.format(message)
+        msg = f"Hello {message.author.mention}"
         await message.channel.send(msg)
 
 #--- OG Chen code ---#
@@ -61,9 +63,9 @@ async def on_message(message):
         city = " ".join(query[1:])  
         msg = get_weather(city)
         #msg = city
-        await message.channel.send(msg)
+        await message.author.send(msg)
 
-    if message.content.startswith("!dice"):
+    if message.content.startswith("!roll"):
         query = message.content.split(" ")
         await message.channel.send(dice_roll(int(query[1])))
 
@@ -76,12 +78,12 @@ async def on_message(message):
             await message.channel.send(x)
 
     if message.content.startswith("!help"):
-        await message.channel.send(help())
+        await message.author.send(help())
 
-#-- Not ready until I can track last message
     if message.content.startswith("!mock"):
         msg = mock(lastmsg)
         await message.channel.send(msg)
     lastmsg = message.content
 
+#-- Run the bot
 client.run(DISCORD_TOKEN[0])

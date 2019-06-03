@@ -1,5 +1,8 @@
 # disschord CHANGELOG
 
+##### 2019/06/03
+Moved a few triggers to respond in DM only to clear up the spamming of channels. Changed the trigger name for a dice from from !dice to !roll. Started experimenting with grabbing a list of users the bot can see. Nothing has come of that yet.
+
 ##### 2019/05/23
 Added a help menu. Moved some code around in an effort to avoid having to refactor later. Continuing to add features.
 
