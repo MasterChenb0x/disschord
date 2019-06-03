@@ -34,6 +34,7 @@ async def on_message(message):
 
 
 #-- Random Chatter
+    saysomething = 0
     if (random.randint(1000, 99991231) + xOrShift()) % 300 < 1:
         saysomething = random.randint(1,2)
     if saysomething % 2 == 1:
