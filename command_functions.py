@@ -9,6 +9,8 @@ import requests
 def help():
     return """ TheRealChen-bot by MasterChen
     !feature <request>
+    !roll <x-sided die>
+    !coinflip
     !8-ball <question>
     !zen (grabs a zen story)
     !weather <city>
