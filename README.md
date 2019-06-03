@@ -11,7 +11,7 @@ A bot for use in Discord chat servers
 4. Request the weather.
 	`!weather New York`
 5. Roll dice and/or flip a coin
-	`!roll <int>`
+	`!roll <int>`      
 	`!coinflip`
 6. Grab the latest InfoSec News from https://seclists.org
 	`!news`

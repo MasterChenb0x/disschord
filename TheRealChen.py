@@ -22,7 +22,10 @@ async def on_ready():
     print(f"-------")
     for guild in client.guilds:
         for member in guild.members:
-            print(member)
+            try:
+                print(member)
+            except:
+                pass
 
 @client.event
 async def on_message(message):
