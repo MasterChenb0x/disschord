@@ -14,6 +14,7 @@ def help():
     !8-ball <question>
     !zen (grabs a zen story)
     !weather <city>
+    !mock
 
     """
 
