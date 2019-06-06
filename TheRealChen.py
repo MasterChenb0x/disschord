@@ -18,14 +18,16 @@ lastmsg = "i will fight you"
 
 @client.event
 async def on_ready():
+    with open("members.txt", "w") as m:
+        for guild in client.guilds:
+            for member in guild.members:
+                try:
+                    print(member)
+                    m.write(member)
+                except:
+                    pass
     print(f"Logged in as {client.user}")
     print(f"-------")
-    for guild in client.guilds:
-        for member in guild.members:
-            try:
-                print(member)
-            except:
-                pass
 
 @client.event
 async def on_message(message):
