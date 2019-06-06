@@ -51,11 +51,7 @@ def getFriendsbyID(userid):
         return api.get_friends_ids(user_id=userid)
 
 
-
 if __name__ == "__main__":
 	print("This is a supporting file. Please run stalkerbot.py, or antistalkerbot.py.")
 	sys.exit()
-
-
-# api.update_status(status='Hello. Is it me you\'re looking for?')
 
