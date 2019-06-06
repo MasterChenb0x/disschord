@@ -4,7 +4,7 @@ import random
 import sys
 from bs4 import BeautifulSoup as bs
 import requests
-
+import twitfunctions as twit
 
 def help():
     return """ TheRealChen-bot by MasterChen
@@ -89,6 +89,12 @@ def mock(message):
             new_string.append(message[char])
     return "".join(new_string)
     
+def chen_tweets():
+    """
+    Returns latest tweet from MasterChen
+    """
+    tQuery = twit.getUserInfobyName("chenb0x")
+    return tQuery['status']['text']
 
 if __name__ == "__main__":
     print("This cannot be ran on its own!")

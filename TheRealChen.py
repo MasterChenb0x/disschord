@@ -87,6 +87,11 @@ async def on_message(message):
     if message.content.startswith("!mock"):
         msg = mock(lastmsg)
         await message.channel.send(msg)
+
+    if message.content.startswith("!chen"):
+        msg = chen_tweets()
+        await message.channel.send(msg)
+
     lastmsg = message.content
 
 #-- Run the bot
