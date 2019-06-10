@@ -29,6 +29,7 @@ async def on_ready():
     print(f"Logged in as {client.user}")
     print(f"-------")
 
+
 @client.event
 async def on_message(message):
     global lastmsg
@@ -41,8 +42,8 @@ async def on_message(message):
 #-- Random Chatter
     saysomething = 0
     if (random.randint(1000, 99991231) + xOrShift()) % 300 < 1:
-        saysomething = random.randint(1,2)
-    if saysomething % 2 == 1:
+#        saysomething = random.randint(1,2)
+#    if saysomething % 2 == 1:
         await message.channel.send("When I am an evil overlord, " + say_something('overlord.txt'))
 #-- End random chatter
 
