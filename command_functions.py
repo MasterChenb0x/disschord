@@ -67,15 +67,16 @@ def infosec_news():
     Grab InfoSec News from seclists.org
     """
     news = []
-    r = requests.get("https://seclists.org/rss/isn.rss")
-    r = r.text.encode("ascii", "ignore")
-    soup = bs(r, "lxml")
-    headlines = soup.find_all('title')
+    
+    url = "http://arstechnica.com/tag/security/"
+    r = requests.get(url)
+    soup = bs(r.content, "lxml")
 
-    for headline in headlines:
-        news.append(headline.contents)
+    for h in soup.find_all("h2"):
+        for l in h.find_all("a"):
+            news.append(f"{l.get('href')}")
 
-    return news
+    return news[:10]
 
 def mock(message):
     """
