@@ -6,6 +6,7 @@ from command_functions import *
 from weather_functions import *
 from chatter_functions import *
 from statz_gamez import *
+import twitfunctions as twit
 import random
 
 #Read tokens from file
@@ -29,6 +30,7 @@ async def on_ready():
     print(f"Logged in as {client.user}")
     print(f"-------")
 
+
 @client.event
 async def on_message(message):
     global lastmsg
@@ -41,8 +43,8 @@ async def on_message(message):
 #-- Random Chatter
     saysomething = 0
     if (random.randint(1000, 99991231) + xOrShift()) % 300 < 1:
-        saysomething = random.randint(1,2)
-    if saysomething % 2 == 1:
+#        saysomething = random.randint(1,2)
+#    if saysomething % 2 == 1:
         await message.channel.send("When I am an evil overlord, " + say_something('overlord.txt'))
 #-- End random chatter
 
@@ -93,6 +95,13 @@ async def on_message(message):
     if message.content.startswith("!chen"):
         msg = chen_tweets()
         await message.channel.send(msg)
+
+    if message.content.startswith("!tweet") and str(message.author) == "chenb0x#6833":
+        query = message.content.split(" ")
+        tweet = " ".join(query[1:])
+        twit.send_tweet(tweet)
+    elif message.content.startswith("!tweet"):
+        await message.channel.send("You aren't Chen though. I dare not break Twitter ToS.")
 
     lastmsg = message.content
 
