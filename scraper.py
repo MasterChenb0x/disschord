@@ -5,9 +5,10 @@
 import requests
 from bs4 import BeautifulSoup as bs
 
-url = "http://picount.com"
-
+url = "http://arstechnica.com/tag/security/"
 r = requests.get(url)
-# soup = bs(r.content, "lxml")
+soup = bs(r.content, "lxml")
 
-print(r.json())
+for h in soup.find_all("h2"):
+    for l in h.find_all("a"):
+        print(f"{l.text}: {l.get('href')}")
