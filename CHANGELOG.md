@@ -1,5 +1,8 @@
 # disschord CHANGELOG
 
+##### 2019/06/14
+Basic Twitter integration is built in. Started on financial suite functions with amortization and monthly payment calculations. 
+
 ##### 2019/06/03
 Moved a few triggers to respond in DM only to clear up the spamming of channels. Changed the trigger name for a dice from from !dice to !roll. Started experimenting with grabbing a list of users the bot can see. Nothing has come of that yet.
 
