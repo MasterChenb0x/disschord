@@ -1,5 +1,8 @@
 # disschord CHANGELOG
 
+##### 2019/06/18
+Started working on financial functions. Amortization works now. Would like to add functionality for Variable/Revolving lines of credit.
+
 ##### 2019/06/14
 Basic Twitter integration is built in. Started on financial suite functions with amortization and monthly payment calculations. 
 
