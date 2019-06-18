@@ -5,6 +5,7 @@ import discord
 from command_functions import *
 from weather_functions import *
 from chatter_functions import *
+from finance_functions import *
 from statz_gamez import *
 import twitfunctions as twit
 import random
@@ -39,7 +40,6 @@ async def on_message(message):
     if message.author == client.user or str(message.guild) == "Greynoise": # Ignore messages sent from self, and for now, Greynoise
         return
 
-
 #-- Random Chatter
     saysomething = 0
     if (random.randint(1000, 99991231) + xOrShift()) % 300 < 1:
@@ -70,7 +70,6 @@ async def on_message(message):
         query = message.content.split(" ")
         city = " ".join(query[1:])  
         msg = get_weather(city)
-        #msg = city
         await message.author.send(msg)
 
     if message.content.startswith("!roll"):
@@ -96,6 +95,19 @@ async def on_message(message):
         msg = chen_tweets()
         await message.channel.send(msg)
 
+#-- Financial Sector
+    if message.content.startswith("!amortize"):
+        query = message.content.split(" ")
+        #try:
+        rate = float(query[2])/12
+        tbl = amortize(float(query[1]), float(monthly_payment(float(query[1]), rate, int(query[3]))), rate)
+        await message.channel.send("| Month\t | Balance\t | Payment\t | Interest Paid\t | Principal Paid |")
+        for t in range(0, len(tbl)):
+            await message.channel.send(f"| {t}\t {tbl[t]}")
+        #except:
+        #    return
+
+#-- Chen only commands
     if message.content.startswith("!tweet") and str(message.author) == "chenb0x#6833":
         query = message.content.split(" ")
         tweet = " ".join(query[1:])
