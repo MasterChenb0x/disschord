@@ -98,14 +98,14 @@ async def on_message(message):
 #-- Financial Sector
     if message.content.startswith("!amortize"):
         query = message.content.split(" ")
-        #try:
-        rate = float(query[2])/12
-        tbl = amortize(float(query[1]), float(monthly_payment(float(query[1]), rate, int(query[3]))), rate)
-        await message.channel.send("| Month\t | Balance\t | Payment\t | Interest Paid\t | Principal Paid |")
-        for t in range(0, len(tbl)):
-            await message.channel.send(f"| {t}\t {tbl[t]}")
-        #except:
-        #    return
+        try:
+            rate = float(query[2])/12
+            tbl = amortize(float(query[1]), float(monthly_payment(float(query[1]), rate, int(query[3]))), rate)
+            await message.channel.send("| Month\t | Balance\t | Payment\t | Interest Paid\t | Principal Paid |")
+            for t in range(0, len(tbl)):
+                await message.channel.send(f"| {t}\t {tbl[t]}")
+        except:
+            await message.channel.send("Try it this way: !amortize <Principal> <rate in percentage> <terms in months>")
 
 #-- Chen only commands
     if message.content.startswith("!tweet") and str(message.author) == "chenb0x#6833":
