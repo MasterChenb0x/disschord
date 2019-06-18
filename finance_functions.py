@@ -10,7 +10,7 @@ def monthly_payment(Principal, Rate, Periods):
     Pmt = Principal*(top/bottom)
     return round(Pmt, 2)
 
-def amortize(principal, pmt):
+def amortize(principal, pmt, rate):
     """
     Recursively amortize down to a zero balance
     """
@@ -18,17 +18,7 @@ def amortize(principal, pmt):
     if principal <= 0:
         return balSheet
     else:
-        balSheet.append(f"| Balnce: {round(principal, 2)} 	| Payment: {pmt}")
-        return balSheet + amortize(principal - pmt, pmt)
+        balSheet.append(f"| {round(principal, 2)}\t | {pmt}\t | {round(principal*rate, 2)}\t | {round(pmt - (principal*rate), 2)}\t")
+        return balSheet + amortize(principal - pmt, pmt, rate)
 
-# UAT
-# rate = 3.9%
-r = .039/12
-n = 60 # 5 year loan
-P = 24000
 
-balance = amortize(P, monthly_payment(P, r, n))
-
-for i in range(0,len(balance)):
-    print(balance[i])
-# print(monthly_payment(P, r, n))
